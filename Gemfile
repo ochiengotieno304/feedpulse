@@ -20,6 +20,8 @@ gem 'feedjira', '~> 3.2', '>= 3.2.2'
 gem 'httparty', '~> 0.21.0'
 gem 'logger', '~> 1.5', '>= 1.5.3'
 gem 'sidekiq', '~> 7.1'
+gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
+gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
 
 group :development, :test do
   gem 'dotenv'
