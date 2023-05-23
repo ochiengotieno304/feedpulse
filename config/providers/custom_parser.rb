@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
-require 'feedjira'
+Hanami.app.register_provider(:custom_parser) do
+  prepare do
+    require 'feedjira'
+  end
 
-module Trends
-  module Parsers
-    class RssEntry < Feedjira::Parser::RSSEntry
+  start do
+    class Feedjira::Parser::RSSEntry
       element 'ht:news_item_title', as: :news_item_title
       element 'ht:news_item_snippet', as: :news_item_snippet
       element 'ht:news_item_url', as: :news_item_url
       element 'ht:news_item_source', as: :news_item_source
+      elements 'ht:news_item', as: :news_item
     end
+
+    parser = Feedjira::Parser::RSSEntry.new
+
+    register 'custom_parser', parser
   end
 end
-

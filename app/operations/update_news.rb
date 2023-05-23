@@ -1,9 +1,10 @@
 require 'httparty'
+require 'feedjira'
 
 module Trends
   module Operations
     class UpdateNews
-      include Deps['components.countries', 'parsers.rss_entry']
+      include Deps['components.countries', 'custom_parser', 'persistence.rom']
 
       def call
         countries = Components::Countries.country_codes
@@ -18,12 +19,16 @@ module Trends
             article_url = item.news_item_url
             article_source = item.news_item_source
 
-            # article = Article.new(article_title, article_snippet, article_url, article_source, code)
+            news_item = {
+              title: article_title,
+              snippet: article_snippet,
+              url: article_url,
+              source: article_source,
+              code: code
+            }
 
-            request_headers = { 'HTTP_ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json' }
-            params = { item: { title: article_title, snippet: article_snippet, url: article_url, source: article_source, code: code } }
+            rom.relations[:news].changeset(:create, news_item).commit
 
-            post '/news', params.to_json, request_headers
           end
         rescue StandardError => e
           puts "Error: #{e.message}"

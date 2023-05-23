@@ -2,9 +2,9 @@
 
 module Trends
   class Routes < Hanami::Routes
-    root to: "home.show"
-    get "/home/:id", to: "home.show"
-    get "/news", to: "news.index"
-    post "/news", to: "news.create"
+    root to: "news.index"
+    # get "/home/:id", to: "home.show"
+    # get "/news", to: "news.index"
+    # post "/news", to: "news.create"
   end
 end

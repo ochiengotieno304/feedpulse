@@ -17,7 +17,7 @@ module Trends
           news = rom.relations[:news]
                     .select(:title, :snippet, :url, :source, :code)
                     .page(request.params[:page] || 1)
-                    .per_page(request.params[:per_page] || 5)
+                    .per_page(request.params[:per_page] || 10)
                     .to_a
 
           response.format = :json
