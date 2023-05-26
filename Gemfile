@@ -22,6 +22,7 @@ gem 'logger', '~> 1.5', '>= 1.5.3'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
 gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
+gem 'jay_doubleu_tee', '~> 0.3.1'
 
 group :development, :test do
   gem 'dotenv'

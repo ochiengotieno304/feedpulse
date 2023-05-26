@@ -6,5 +6,6 @@ module Trends
     # get "/home/:id", to: "home.show"
     # get "/news", to: "news.index"
     # post "/news", to: "news.create"
+    post "/api/auth/signup", to: "users.create"
   end
 end

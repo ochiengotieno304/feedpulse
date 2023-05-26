@@ -2,25 +2,22 @@
 
 module Trends
   module Actions
-    module News
+    module Users
       class Create < Trends::Action
         include Deps["persistence.rom"]
 
         params do
-          required(:item).hash do
-            required(:title).filled(:string)
-            required(:snippet).filled(:string)
-            required(:url).filled(:string)
-            required(:source).filled(:string)
-            required(:code).filled(:string)
+          required(:user).hash do
+            required(:username).filled(:string, format?: /^[a-zA-Z][a-zA-Z0-9_]{3,29}$/)
+            required(:email).filled(:string, format?: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}$/)
           end
         end
 
         def handle(request, response)
           if request.params.valid?
-            news_item = rom.relations[:news].changeset(:create, request.params[:item]).commit
+            new_user = rom.relations[:users].changeset(:create, request.params[:user]).commit
             response.status = 201
-            response.body = news_item.to_json
+            response.body = new_user.to_json
           else
             response.status = 422
             response.format = :json
