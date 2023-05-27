@@ -5,6 +5,7 @@ require "hanami/action"
 
 module Trends
   class Action < Hanami::Action
+    config.format :json
     config.handle_exception ROM::TupleCountMismatchError => :handle_not_found
 
     private

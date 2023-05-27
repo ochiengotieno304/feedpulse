@@ -16,6 +16,7 @@ Hanami.app.register_provider(:auth) do
         {
           exp: Time.now.to_i + 4 * 3600,
           iat: Time.now.to_i,
+          scopes: ['view_news'],
           user: {
             id: user_id
           }

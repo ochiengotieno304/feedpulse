@@ -12,6 +12,9 @@ module Trends
         end
 
         def handle(request, response)
+          scopes = request.env.values_at :scopes
+          return unless scopes.first.include?('view_news')
+
           halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
           news = rom.relations[:news]
@@ -22,6 +25,7 @@ module Trends
 
           response.format = :json
           response.body = news.to_json
+
         end
       end
     end
