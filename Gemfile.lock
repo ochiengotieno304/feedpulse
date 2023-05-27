@@ -29,12 +29,6 @@ GEM
     dry-core (1.0.0)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
-    dry-effects (0.4.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0)
-      dry-inflector (~> 1.0)
-      dry-initializer (~> 3.0)
-      zeitwerk (~> 2.6)
     dry-events (1.0.1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
@@ -43,10 +37,6 @@ GEM
     dry-initializer (3.1.1)
     dry-logger (1.0.3)
     dry-logic (1.5.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0, < 2)
-      zeitwerk (~> 2.6)
-    dry-monads (1.6.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
@@ -160,11 +150,6 @@ GEM
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    jay_doubleu_tee (0.3.1)
-      dry-configurable
-      dry-effects
-      dry-monads
-      jwt
     json (2.6.3)
     jwt (2.7.0)
     listen (3.8.0)
@@ -307,7 +292,7 @@ DEPENDENCIES
   hanami-rspec
   hanami-validations (~> 2.0)
   httparty (~> 0.21.0)
-  jay_doubleu_tee (~> 0.3.1)
+  jwt (~> 2.7)
   logger (~> 1.5, >= 1.5.3)
   pg
   puma

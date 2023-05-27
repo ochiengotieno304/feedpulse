@@ -4,7 +4,7 @@ module Trends
   module Actions
     module Users
       class Create < Trends::Action
-        include Deps["persistence.rom"]
+        include Deps["persistence.rom", "auth"]
 
         params do
           required(:username).filled(:string, format?: /^[a-zA-Z][a-zA-Z0-9_]{3,29}$/)
@@ -19,12 +19,14 @@ module Trends
           begin
             new_user = rom.relations[:users].changeset(:create, username: username, email: email).commit
             response.status = 201
-            response.body = { message: 'account registered successfully', user: new_user }.to_json
+            response.body = { message: 'account registered successfully', user: new_user, token: Auth.token(new_user[:id]) }.to_json
           rescue StandardError => e
             if e.message.include?('users_username_key')
               halt 409, { errors: 'username unavailable' }.to_json
             elsif e.message.include?('users_email_key')
               halt 409, { errors: 'email unavailable' }.to_json
+            else
+              halt 500, { errors: 'request failed' }
             end
           end
         end

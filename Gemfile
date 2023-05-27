@@ -15,14 +15,14 @@ gem 'pg'
 gem 'rom', '~> 5.3'
 gem 'rom-sql', '~> 3.6'
 
+gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
 gem 'carmen', '~> 1.1', '>= 1.1.3'
 gem 'feedjira', '~> 3.2', '>= 3.2.2'
 gem 'httparty', '~> 0.21.0'
+gem 'jwt', '~> 2.7'
 gem 'logger', '~> 1.5', '>= 1.5.3'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
-gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
-gem 'jay_doubleu_tee', '~> 0.3.1'
 
 group :development, :test do
   gem 'dotenv'
