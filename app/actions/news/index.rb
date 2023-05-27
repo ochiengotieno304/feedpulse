@@ -12,7 +12,7 @@ module Trends
         end
 
         def handle(request, response)
-          halt 422, {errors: request.params.errors}.to_json unless request.params.valid?
+          halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
           news = rom.relations[:news]
                     .select(:title, :snippet, :url, :source, :code)

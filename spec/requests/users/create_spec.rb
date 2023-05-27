@@ -7,7 +7,7 @@ RSpec.describe 'POST /api/auth/signup', type: [:request, :database] do
 
   context 'given valid params' do
     let(:params) do
-      { user: { username: 'testuname', email: 'test@mail.com' } }
+      { user: { username: 'test', email: 'test@mail.com' } }
     end
 
     it 'creates a new user' do
