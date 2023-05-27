@@ -2,10 +2,22 @@
 
 module Trends
   class Routes < Hanami::Routes
-    root to: "news.index"
+    # use JwtAuth
+
+    # root to: 'news.index'
     # get "/home/:id", to: "home.show"
     # get "/news", to: "news.index"
     # post "/news", to: "news.create"
-    post "/api/auth/signup", to: "users.create"
+
+    scope 'api' do
+      scope 'auth' do
+        post '/signup', to: 'users.create'
+      end
+
+      scope 'feeds' do
+        use JwtAuth
+        get '/', to: 'news.index'
+      end
+    end
   end
 end
