@@ -5,7 +5,7 @@ module Trends
         schema(:news, infer: true)
 
         use :pagination
-        per_page 5
+        per_page 10
       end
     end
   end
