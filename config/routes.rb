@@ -18,7 +18,11 @@ module Trends
         use JwtAuth
         get '/', to: 'news.index'
       end
+
+      scope 'tokens' do
+        use JwtAuth
+        post '/refresh', to: 'token.update'
+      end
     end
-    patch "/token/:id", to: "token.update"
   end
 end
