@@ -35,6 +35,7 @@ module Auth
         exp: Time.now.to_i + 7 * 24 * 3600,
         iat: Time.now.to_i,
         iss: 'https://feedpulse.live',
+        scopes: ['refresh_token'],
         user: {
           id: user_id
         }

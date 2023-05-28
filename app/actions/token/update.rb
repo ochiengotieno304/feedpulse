@@ -11,6 +11,9 @@ module Trends
         end
 
         def handle(request, response)
+          # scopes = request.env.values_at :scopes
+          # return unless scopes.first.include?('refresh_token')
+
           halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
           user = request.env.values_at :user
@@ -24,13 +27,14 @@ module Trends
                       .changeset(:update, refresh_token: tokens[:refresh_token]).commit
 
             response.status = 200
-            response.body = { message: 'ensure you save your refresh token to prevent account loss', user: user, token: tokens[:access_token] }.to_json
+            response.body = { message: 'ensure you save your refresh token to prevent account loss', user: user,
+                              token: tokens[:access_token] }.to_json
           else
             response.status = 200
             response.body = { errors: 'token mismatch' }.to_json
           end
         rescue StandardError
-          halt 500, { errors: 'request failed' }
+          halt 500, { errors: 'request failed' }.to_json
         end
       end
     end
