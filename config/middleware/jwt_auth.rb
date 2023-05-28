@@ -6,7 +6,7 @@ class JwtAuth
   end
 
   def call(env)
-    options = { alg: 'HS256' }
+    options = { alg: 'HS256' } # TODO: Add issuer
     bearer_token = env.fetch('HTTP_AUTHORIZATION', '').slice(7..-1)
     payload = JWT.decode bearer_token, 'zPJhte9LwOJwubVRmscJ0Ytro', true, options
 

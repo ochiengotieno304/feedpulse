@@ -16,7 +16,7 @@ module Auth
 
     def self.payload user_id
       {
-        exp: Time.now.to_i + 3600,
+        exp: Time.now.to_i + 4 * 3600,
         iat: Time.now.to_i,
         iss: 'https://feedpulse.live',
         scopes: ['view_news'],

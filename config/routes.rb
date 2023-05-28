@@ -19,5 +19,6 @@ module Trends
         get '/', to: 'news.index'
       end
     end
+    patch "/token/:id", to: "token.update"
   end
 end

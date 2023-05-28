@@ -19,7 +19,7 @@ module Trends
           halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
           country_code = request.params[:country]&.upcase
-          news_relation = rom.relations[:news].select(:title, :snippet, :url, :source, :code)
+          news_relation = rom.relations[:news].select(:title, :snippet, :url, :source, :code, :date)
           news_relation = news_relation.where(code: country_code) if country_code
           news_relation = news_relation.order(Sequel.desc(:date))
           news_relation = news_relation.page(request.params[:page] || 1)
