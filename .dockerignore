@@ -1,0 +1,10 @@
+.git
+.gitignore
+/tmp
+/log
+/tmp
+/public/assets
+/public/packs
+/public/uploads
+/vendor/bundle
+/node_modules
