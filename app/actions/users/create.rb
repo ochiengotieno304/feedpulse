@@ -19,7 +19,7 @@ module Trends
           begin
             new_user = rom.relations[:users].changeset(:create, username: username, email: email).commit
             response.status = 201
-            response.body = { message: 'account registered successfully', user: new_user, token: Auth.token(new_user[:id]) }.to_json
+            response.body = { message: 'account registered successfully', user: new_user, token: Auth::Auth.token(new_user[:id]) }.to_json
           rescue StandardError => e
             if e.message.include?('users_username_key')
               halt 409, { errors: 'username unavailable' }.to_json
