@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Trends API
+  title: FeedPulse API
   version: 1.0.0
 
 paths:
