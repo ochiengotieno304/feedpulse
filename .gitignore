@@ -2,5 +2,3 @@
 .env.test
 .env.production
 log/*
-postgres-data
-redis-data
