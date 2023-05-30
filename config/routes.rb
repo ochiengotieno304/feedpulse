@@ -11,7 +11,7 @@ module Trends
 
     scope 'api' do
       scope 'auth' do
-        post '/signup', to: 'users.create'
+        post '/account', to: 'users.create'
       end
 
       scope 'feeds' do

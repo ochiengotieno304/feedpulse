@@ -14,7 +14,7 @@ module Trends
 
         def handle(request, response)
           scopes = request.env.values_at :scopes
-          return unless scopes.first.include?('view_news')
+          halt 403, { errors: 'unauthorized token' }.to_json unless scopes.first.include?('view_news')
 
           halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
@@ -26,6 +26,7 @@ module Trends
           news_relation = news_relation.per_page(request.params[:per_page] || 10)
           news = news_relation.to_a
 
+          # response.status = 200
           response.format = :json
           response.body = news.to_json
         end

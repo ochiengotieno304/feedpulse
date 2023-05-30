@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: Trends API
+  version: 1.0.0
+
+paths:
+  /api/auth/account:
+    post:
+      summary: User Signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '200':
+          description: User registration successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      username:
+                        type: string
+                      email:
+                        type: string
+                      refresh_token:
+                        type: string
+                  token:
+                    type: string
+        '409':
+          description: Email or username unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+        '500':
+          description: Request failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+
+  /api/feeds:
+    get:
+      summary: Get News Items
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          schema:
+            type: integer
+        - name: perpage
+          in: query
+          description: Number of items per page
+          schema:
+            type: integer
+        - name: country
+          in: query
+          description: Country code
+          schema:
+            type: string
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: News items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    snippet:
+                      type: string
+                    url:
+                      type: string
+                    source:
+                      type: string
+                    code:
+                      type: string
+                    date:
+                      type: string
+        '401':
+          description: Missing or invalid auth token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+        '403':
+          description: Invalid auth key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+        '500':
+          description: Request failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+
+  /api/tokens/refresh:
+    post:
+      summary: Refresh Token
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: Refreshed token and user details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      username:
+                        type: string
+                      email:
+                        type: string
+                      refresh_token:
+                        type: string
+                  token:
+                    type: string
+        '401':
+          description: Token mismatch
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+        '500':
+          description: Request failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
