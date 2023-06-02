@@ -23,6 +23,8 @@ gem 'jwt', '~> 2.7'
 gem 'logger', '~> 1.5', '>= 1.5.3'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
+gem 'rack-cors'
+
 
 group :development, :test do
   gem 'dotenv'
