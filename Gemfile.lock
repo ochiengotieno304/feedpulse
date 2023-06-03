@@ -82,6 +82,7 @@ GEM
       loofah (>= 2.3.1)
       sax-machine (>= 1.0)
     ffi (1.15.5)
+    foreman (0.87.2)
     formatador (1.1.0)
     fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
@@ -293,6 +294,7 @@ DEPENDENCIES
   dotenv
   dry-types (~> 1.0, >= 1.6.1)
   feedjira (~> 3.2, >= 3.2.2)
+  foreman (~> 0.87.2)
   guard-puma (~> 0.8)
   hanami (~> 2.0)
   hanami-controller (~> 2.0)
