@@ -9,7 +9,7 @@ module Auth
 
     def self.token user_id
       # JWT.encode payload(user_id), @secret, 'HS256'
-      access_token = JWT.encode(payload(user_id), 'zPJhte9LwOJwubVRmscJ0Ytro', 'HS256')
+      access_token = JWT.encode(payload(user_id), ENV['SECRET_KEY'], 'HS256')
       refresh_token = refresh_token(user_id)
       { access_token: access_token, refresh_token: refresh_token }
     end
@@ -27,7 +27,7 @@ module Auth
     end
 
     def self.refresh_token(user_id)
-      JWT.encode(refresh_payload(user_id), 'zPJhte9LwOJwubVRmscJ0Ytro', 'HS256')
+      JWT.encode(refresh_payload(user_id), ENV['SECRET_KEY'], 'HS256')
     end
 
     def self.refresh_payload(user_id)

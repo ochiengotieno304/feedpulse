@@ -1,40 +1,17 @@
-ARG RUBY_VERSION=3.1.2
-FROM ruby:$RUBY_VERSION-slim as base
+FROM ruby:3.0.1-alpine as builder
+RUN apk add build-base postgresql-dev curl # Add necessary dependencies
+COPY Gemfile* ./
 
-# Rack app lives here
-WORKDIR /app
+# Download the root certificate file
+RUN curl -o /root/.postgresql/root.crt --create-dirs 'https://cockroachlabs.cloud/clusters/6db9c595-5fb8-4ab6-bddd-3cd618b576c2/cert'
 
-# Update gems and bundler
-RUN gem update --system --no-document && \
-    gem install -N bundler
-
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
-
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential
-
-# Install application gems
-COPY Gemfile* .
+RUN gem install pg -v '1.5.3' --source 'https://rubygems.org/'
 RUN bundle install
 
-
-# Final stage for app image
-FROM base
-
-# Run and own the application files as a non-root user for security
-RUN useradd ruby --home /app --shell /bin/bash
-USER ruby:ruby
-
-# Copy built artifacts: gems, application
-COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build --chown=ruby:ruby /app /app
-
-# Copy application code
-COPY --chown=ruby:ruby . .
-
-# Start the server
+FROM ruby:3.0.1-alpine as runner
+RUN apk add postgresql-libs # Add PostgreSQL runtime libraries
+WORKDIR /app
+COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
+COPY . .
 EXPOSE 2300
-CMD ["hanami", "server", "--host", "0.0.0.0"]
+CMD ["bundle", "exec", "hanami", "server", "--host", "0.0.0.0"]

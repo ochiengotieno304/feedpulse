@@ -7,8 +7,8 @@ app = "feedpulse"
 primary_region = "yyz"
 
 [processes]
-  app = "hanami server --host 0.0.0.0 --port 2300"
-  worker = "sidekiq -r ./config/sidekiq.rb"
+  app = "hanami server --host 0.0.0.0"
+  worker = "bundle exec sidekiq -r ./config/sidekiq.rb"
 
 
 [http_service]

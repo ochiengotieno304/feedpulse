@@ -3,6 +3,7 @@
 **/.env.test
 **/.env.production
 **/log/*
+**/.bundle
 
 # flyctl launch added from .idea/.gitignore
 # Default ignored files
@@ -15,3 +16,4 @@
 .idea/dataSources.local.xml
 fly.toml
 openapi.yaml
+deploy
