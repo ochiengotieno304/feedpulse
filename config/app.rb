@@ -3,6 +3,7 @@
 require 'hanami'
 require 'rack/cors'
 require_relative 'middleware/jwt_auth'
+require_relative 'sidekiq'
 
 module Trends
   class App < Hanami::App

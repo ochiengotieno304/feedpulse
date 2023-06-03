@@ -21,10 +21,10 @@ gem 'feedjira', '~> 3.2', '>= 3.2.2'
 gem 'httparty', '~> 0.21.0'
 gem 'jwt', '~> 2.7'
 gem 'logger', '~> 1.5', '>= 1.5.3'
+gem 'rack-cors'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
-gem 'rack-cors'
-
+gem 'sinatra', '~> 3.0', '>= 3.0.6', require: false
 
 group :development, :test do
   gem 'dotenv'
