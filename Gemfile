@@ -25,6 +25,8 @@ gem 'rack-cors'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
 gem 'sinatra', '~> 3.0', '>= 3.0.6', require: false
+gem 'guard-puma', '~> 0.8'
+
 
 group :development, :test do
   gem 'dotenv'
