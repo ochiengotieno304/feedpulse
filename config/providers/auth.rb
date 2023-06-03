@@ -8,7 +8,7 @@ Hanami.app.register_provider(:auth) do
 
   start do
 
-    auth = Auth::Auth.new(target['settings'].jwt_secret_key)
+    auth = Auth::Auth.new(target['settings'].secret_key)
 
     register 'auth', auth
   end

@@ -6,7 +6,7 @@ module Trends
     #
     # setting :my_flag, default: false, constructor: Types::Params::Bool
     setting :database_url, constructor: Types::String
-    setting :jwt_secret_key, constructor: Types::String
+    setting :secret_key, constructor: Types::String
     setting :redis_url, constructor: Types::String
   end
 end
