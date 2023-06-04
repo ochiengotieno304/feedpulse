@@ -28,7 +28,7 @@ gem 'sinatra', '~> 3.0', '>= 3.0.6', require: false
 gem 'tzinfo-data'
 gem 'foreman'
 gem "redis", "~> 5.0"
-
+gem 'guard-puma', '~> 0.8'
 
 group :development, :test do
   gem 'dotenv'
