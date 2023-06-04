@@ -2,11 +2,13 @@ openapi: 3.0.3
 info:
   title: FeedPulse API
   version: 1.0.0
-
+servers:
+  - url: https://feedpulse.onrender.com/api/
+    description: Production Server
 paths:
-  /api/auth/account:
+  /auth/account:
     post:
-      summary: User Signup
+      summary: User Registration
       requestBody:
         required: true
         content:
@@ -60,7 +62,7 @@ paths:
                   errors:
                     type: string
 
-  /api/feeds:
+  /feeds:
     get:
       summary: Get News Items
       parameters:
@@ -69,7 +71,7 @@ paths:
           description: Page number
           schema:
             type: integer
-        - name: perpage
+        - name: per_page
           in: query
           description: Number of items per page
           schema:
@@ -131,7 +133,7 @@ paths:
                   errors:
                     type: string
 
-  /api/tokens/refresh:
+  /tokens/refresh:
     post:
       summary: Refresh Token
       security:

@@ -15,7 +15,7 @@ module Trends
       end
 
       scope 'feeds' do
-        use JwtAuth
+        # use JwtAuth
         get '/', to: 'news.index'
       end
 
