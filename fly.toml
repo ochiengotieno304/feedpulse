@@ -8,8 +8,7 @@ primary_region = "yyz"
 
 [processes]
   app = "hanami server --host 0.0.0.0 --port 2300"
-  worker = "sidekiq -r ./config/sidekiq.rb"
-
+  worker = "bundle exec sidekiq ./config/sidekiq.rb"
 
 [http_service]
   processes = ["app"]

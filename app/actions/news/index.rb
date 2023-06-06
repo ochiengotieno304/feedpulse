@@ -13,9 +13,8 @@ module Trends
         end
 
         def handle(request, response)
-          # scopes = request.env.values_at :scopes
-          # halt 403, { errors: 'unauthorized token' }.to_json unless scopes.first.include?('view_news')
-          puts request
+          scopes = request.env.values_at :scopes
+          halt 403, { errors: 'unauthorized token' }.to_json unless scopes.first.include?('view_news')
           halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
           country_code = request.params[:country]&.upcase
