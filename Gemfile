@@ -29,6 +29,7 @@ gem 'tzinfo-data'
 gem 'foreman'
 gem "redis", "~> 5.0"
 gem 'guard-puma', '~> 0.8'
+gem 'rack-heartbeat'
 
 group :development, :test do
   gem 'dotenv'

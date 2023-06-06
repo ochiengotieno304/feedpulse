@@ -2,12 +2,16 @@
 
 require 'hanami'
 require 'rack/cors'
+require 'rack/protection'
+require 'rack/heartbeat'
 require_relative 'middleware/jwt_auth'
 
 module Trends
   class App < Hanami::App
     config.middleware.use :body_parser, :json
     # config.middleware.use JsonFilterMiddleware
+    # config.middleware.use Rack::Protection
+    config.middleware.use Rack::Heartbeat
     config.middleware.use Rack::Cors do
       allow do
         origins '*'

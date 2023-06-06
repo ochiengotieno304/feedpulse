@@ -191,6 +191,8 @@ GEM
     rack (2.2.7)
     rack-cors (2.0.1)
       rack (>= 2.0.0)
+    rack-heartbeat (1.1.0)
+      rack
     rack-protection (3.0.6)
       rack
     rack-test (2.1.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   pg
   puma
   rack-cors
+  rack-heartbeat
   rack-test
   rake
   redis (~> 5.0)
