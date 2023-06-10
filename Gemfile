@@ -16,20 +16,21 @@ gem 'rom', '~> 5.3'
 gem 'rom-sql', '~> 3.6'
 
 gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
-gem 'carmen', '~> 1.1', '>= 1.1.3'
+gem 'countries', '~> 5.4'
 gem 'feedjira', '~> 3.2', '>= 3.2.2'
+gem 'foreman'
+gem 'guard-puma', '~> 0.8'
 gem 'httparty', '~> 0.21.0'
 gem 'jwt', '~> 2.7'
 gem 'logger', '~> 1.5', '>= 1.5.3'
 gem 'rack-cors'
+gem 'rack-heartbeat'
+gem 'rack-oauth2'
+gem 'redis', '~> 5.0'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
 gem 'sinatra', '~> 3.0', '>= 3.0.6', require: false
 gem 'tzinfo-data'
-gem 'foreman'
-gem "redis", "~> 5.0"
-gem 'guard-puma', '~> 0.8'
-gem 'rack-heartbeat'
 
 group :development, :test do
   gem 'dotenv'
@@ -53,3 +54,7 @@ group :test do
   gem 'rack-test'
 end
 
+
+gem 'oauth2', '~> 2.0'
+
+gem 'bcrypt', '~> 3.1'

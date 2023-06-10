@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require 'carmen'
+require 'countries'
 
 module Trends
   module Components
     class Countries
-      include Carmen
-
       def self.country_codes
         YAML.load_file('data.yaml').map do |country|
-          Country.named(country).code
+          ISO3166::Country.find_country_by_any_name(country).alpha2
         end
       end
     end
