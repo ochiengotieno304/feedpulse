@@ -5,6 +5,7 @@ require 'rack/cors'
 require 'rack/protection'
 require 'rack/heartbeat'
 require 'treblle'
+# require 'action'
 require_relative 'middleware/jwt_auth'
 
 module Trends
