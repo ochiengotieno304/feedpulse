@@ -30,6 +30,7 @@ gem 'redis', '~> 5.0'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
 gem 'sinatra', '~> 3.0', '>= 3.0.6', require: false
+gem "treblle", "~> 1.0.3"
 gem 'tzinfo-data'
 
 group :development, :test do
