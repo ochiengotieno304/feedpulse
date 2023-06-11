@@ -3,10 +3,12 @@ info:
   title: FeedPulse API
   version: 1.0.0
 servers:
-  - url: https://feedpulse.onrender.com/api/
+  - url: https://feedpulse.onrender.com/
     description: Production Server
+  - url: http://localhost:2300/
+    description: Test Server
 paths:
-  /auth/account:
+  /account/register:
     post:
       summary: User Registration
       requestBody:
@@ -33,16 +35,12 @@ paths:
                   user:
                     type: object
                     properties:
-                      id:
-                        type: string
                       username:
                         type: string
                       email:
                         type: string
-                      refresh_token:
+                      api_key:
                         type: string
-                  token:
-                    type: string
         '409':
           description: Email or username unavailable
           content:
@@ -62,7 +60,7 @@ paths:
                   errors:
                     type: string
 
-  /feeds:
+  /api/feeds:
     get:
       summary: Get News Items
       parameters:
@@ -82,7 +80,7 @@ paths:
           schema:
             type: string
       security:
-        - bearerAuth: [ ]
+        - ApiKeyAuth: [ ]
       responses:
         '200':
           description: News items
@@ -106,7 +104,7 @@ paths:
                     date:
                       type: string
         '401':
-          description: Missing or invalid auth token
+          description: Missing or invalid auth key
           content:
             application/json:
               schema:
@@ -133,56 +131,10 @@ paths:
                   errors:
                     type: string
 
-  /tokens/refresh:
-    post:
-      summary: Refresh Token
-      security:
-        - bearerAuth: [ ]
-      responses:
-        '200':
-          description: Refreshed token and user details
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      username:
-                        type: string
-                      email:
-                        type: string
-                      refresh_token:
-                        type: string
-                  token:
-                    type: string
-        '401':
-          description: Token mismatch
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: string
-        '500':
-          description: Request failed
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: string
 
 components:
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+      ApiKeyAuth:
+        type: apiKey
+        in: header
+        name: Authorization
