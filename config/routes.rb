@@ -20,5 +20,9 @@ module Trends
         post '/refresh', to: 'token.update'
       end
     end
+
+    slice :account, at: '/account' do
+      post '/register', to: 'users.create'
+    end
   end
 end

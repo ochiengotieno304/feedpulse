@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Trends
+module Account
   module Actions
     module Users
-      class Create < Trends::Action
-        include Deps["persistence.rom", "auth"]
+      class Create < Hanami::Action
+        include Deps['persistence.rom']
 
         params do
           required(:username).filled(:string, format?: /^[a-zA-Z][a-zA-Z0-9_]{3,29}$/)
@@ -14,22 +14,22 @@ module Trends
         def handle(request, response)
           halt 422, { errors: request.params.errors }.to_json unless request.params.valid?
 
+          api_key = Components::APIKey.new
           username = request.params[:username]
           email = request.params[:email]
           begin
-            new_user = rom.relations[:users].changeset(:create, username: username, email: email).commit # TODO: Save refresh token to db
+            rom.relations[:users].changeset(:create, username:, email:,
+                                            api_key: api_key.api_key_encrypted).commit
+
+            response.body = { message: 'account registered successfully', user_details: { username:, email:, api_key: api_key.api_key } }.to_json
             response.status = 201
-            tokens = Auth::Auth.token(new_user[:id])
-            user = rom.relations[:users].by_pk(new_user[:id])
-                      .changeset(:update, refresh_token: tokens[:refresh_token]).commit
-            response.body = { message: 'account registered successfully, save refresh token to avoid account loss', user: user, token: tokens[:access_token] }.to_json
           rescue StandardError => e
             if e.message.include?('users_username_key')
               halt 409, { errors: 'username unavailable' }.to_json
             elsif e.message.include?('users_email_key')
               halt 409, { errors: 'email unavailable' }.to_json
             else
-              halt 500, { errors: 'request failed' }.to_json
+              halt 500, { errors: 'server error, request failed' }.to_json
             end
           end
         end
@@ -37,3 +37,4 @@ module Trends
     end
   end
 end
+

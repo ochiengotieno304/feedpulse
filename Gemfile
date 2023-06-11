@@ -16,6 +16,7 @@ gem 'rom', '~> 5.3'
 gem 'rom-sql', '~> 3.6'
 
 gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
+gem 'bcrypt', '~> 3.1'
 gem 'countries', '~> 5.4'
 gem 'feedjira', '~> 3.2', '>= 3.2.2'
 gem 'foreman'
@@ -29,10 +30,7 @@ gem 'rack-oauth2'
 gem 'redis', '~> 5.0'
 gem 'sidekiq', '~> 7.1'
 gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
-gem 'sinatra', '~> 3.0', '>= 3.0.6', require: false
-gem "treblle", "~> 1.0.3"
 gem 'tzinfo-data'
-gem 'actionpack', '~> 7.0', '>= 7.0.5'
 
 group :development, :test do
   gem 'dotenv'
@@ -57,6 +55,3 @@ group :test do
 end
 
 
-gem 'oauth2', '~> 2.0'
-
-gem 'bcrypt', '~> 3.1'
