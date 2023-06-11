@@ -8,7 +8,5 @@ module Trends
     setting :database_url, constructor: Types::String
     setting :secret_key, constructor: Types::String
     setting :redis_url, constructor: Types::String
-    setting :treblle_api_key, constructor: Types::String
-    setting :treblle_project_id, constructor: Types::String
   end
 end
