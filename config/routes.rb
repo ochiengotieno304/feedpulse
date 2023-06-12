@@ -11,7 +11,7 @@ module Trends
     end
 
     slice :account, at: '/account' do
-      post '/register', to: 'users.create'
+      post '/new', to: 'users.create'
     end
   end
 end

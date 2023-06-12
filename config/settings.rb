@@ -8,5 +8,7 @@ module Trends
     setting :database_url, constructor: Types::String
     setting :secret_key, constructor: Types::String
     setting :redis_url, constructor: Types::String
+    setting :forwarded_host, constructor: Types::String
+    setting :rapid_api_proxy_secret, constructor: Types::String
   end
 end

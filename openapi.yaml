@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: FeedPulse API
-  version: 1.0.0
+  version: 1.0.1
 servers:
   - url: https://feedpulse.onrender.com/
     description: Production Server
@@ -79,6 +79,11 @@ paths:
           description: Country code
           schema:
             type: string
+        - name: username
+          in: query
+          description: Username of user making request
+          schema:
+            type: string
       security:
         - ApiKeyAuth: [ ]
       responses:
@@ -104,7 +109,7 @@ paths:
                     date:
                       type: string
         '401':
-          description: Missing or invalid auth key
+          description: Missing or invalid api key
           content:
             application/json:
               schema:
@@ -113,7 +118,7 @@ paths:
                   errors:
                     type: string
         '403':
-          description: Invalid auth key
+          description: Invalid username or api key
           content:
             application/json:
               schema:

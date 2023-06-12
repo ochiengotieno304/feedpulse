@@ -11,7 +11,7 @@ module Account
       attr_reader :api_key, :api_key_encrypted
 
       def initialize
-        @api_key = SecureRandom.hex
+        @api_key = SecureRandom.hex(32)
         @api_key_encrypted = BCrypt::Password.create(api_key)
       end
 
