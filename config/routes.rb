@@ -11,7 +11,7 @@ module Trends
     end
 
     slice :account, at: '/account' do
-      post '/new', to: 'users.create'
+      post '/new', to: -> (env) { [200, {}, ['Deprecated, use https://rapidapi.com/ochiengotieno304/api/feedpulse2 to access FeedPulse']] }
     end
   end
 end
