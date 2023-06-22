@@ -1,0 +1,43 @@
+version: '3.1'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    restart: always
+    environment:
+      POSTGRES_DB: news_development
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: password
+      PGDATA: postgres_data:/var/lib/postgresql/data
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6380:6379
+
+  app:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    environment:
+      DATABASE_URL: postgresql://dev:password@db:5432/news_development
+      REDIS_URL: redis://redis:6380/1
+      SECRET_KEY: secret-key
+      RAPID_API_PROXY_SECRET: 1e76ce90-0300-11ee-b3af-9b90e45890d7
+    depends_on:
+      - db
+      - redis
+    links:
+      - db
+    ports:
+      - 2301:2300
+
+volumes:
+  postgres:
+    driver: local

@@ -15,7 +15,6 @@ class JsonFilterMiddleware
       return [400, { 'Content-Type' => 'application/json' }, ['Bad Request: Only JSON requests are allowed']]
     end
 
-
     begin
       JSON.parse(request.body.read)
     rescue JSON::ParserError

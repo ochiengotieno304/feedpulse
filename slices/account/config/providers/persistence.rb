@@ -13,7 +13,6 @@ Account::Slice.register_provider :persistence, namespace: true do
   start do
     config = target['persistence.config']
 
-
     config.auto_registration(
       target.root.join('lib/account/persistence'),
       namespace: 'Account::Persistence'

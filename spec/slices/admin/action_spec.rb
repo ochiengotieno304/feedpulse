@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-RSpec.describe Account::Action do
+RSpec.describe Admin::Action do
   xit 'works'
 end

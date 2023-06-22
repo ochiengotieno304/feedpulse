@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 require 'cgi'
 
 class AuthCheck
-  def initialize app
+  def initialize(app)
     @app = app
   end
 

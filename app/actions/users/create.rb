@@ -4,7 +4,7 @@ module Trends
   module Actions
     module Users
       class Create < Trends::Action
-        include Deps["persistence.rom", "auth"]
+        include Deps['persistence.rom', 'auth']
 
         params do
           required(:username).filled(:string, format?: /^[a-zA-Z][a-zA-Z0-9_]{3,29}$/)
@@ -17,12 +17,13 @@ module Trends
           username = request.params[:username]
           email = request.params[:email]
           begin
-            new_user = rom.relations[:users].changeset(:create, username: username, email: email).commit # TODO: Save refresh token to db
+            new_user = rom.relations[:users].changeset(:create, username:, email:).commit # TODO: Save refresh token to db
             response.status = 201
             tokens = Auth::Auth.token(new_user[:id])
             user = rom.relations[:users].by_pk(new_user[:id])
                       .changeset(:update, refresh_token: tokens[:refresh_token]).commit
-            response.body = { message: 'account registered successfully, save refresh token to avoid account loss', user: user, token: tokens[:access_token] }.to_json
+            response.body = { message: 'account registered successfully, save refresh token to avoid account loss',
+                              user:, token: tokens[:access_token] }.to_json
           rescue StandardError => e
             if e.message.include?('users_username_key')
               halt 409, { errors: 'username unavailable' }.to_json

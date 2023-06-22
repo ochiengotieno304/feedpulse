@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'POST /api/auth/signup', type: [:request, :database] do
+RSpec.describe 'POST /api/auth/signup', type: %i[request database] do
   let(:request_headers) do
     { 'HTTP_ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json' }
   end

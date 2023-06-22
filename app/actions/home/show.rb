@@ -5,7 +5,7 @@ module Trends
     module Home
       class Show < Trends::Action
         def handle(*, response)
-          response.body = "Trends"
+          response.body = 'Trends'
         end
       end
     end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class JwtAuth
-  def initialize app
+  def initialize(app)
     @app = app
   end
 
@@ -14,7 +14,6 @@ class JwtAuth
     env[:user] = payload[0]['user']
 
     @app.call env
-
   rescue JWT::ExpiredSignature
     [403, { 'Content-Type' => 'text/plain' }, ['token has expired.']]
   rescue JWT::InvalidIssuerError

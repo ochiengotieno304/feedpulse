@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Trends
   module Components
     class Article
@@ -14,4 +15,3 @@ module Trends
     end
   end
 end
-

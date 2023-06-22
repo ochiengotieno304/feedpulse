@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Account
   module Persistence
     module Relations
@@ -8,4 +9,3 @@ module Account
     end
   end
 end
-

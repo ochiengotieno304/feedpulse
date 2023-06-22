@@ -4,7 +4,7 @@ module Trends
   module Actions
     module News
       class Create < Trends::Action
-        include Deps["persistence.rom"]
+        include Deps['persistence.rom']
 
         params do
           required(:item).hash do

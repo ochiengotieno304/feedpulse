@@ -19,9 +19,10 @@ module Account
           email = request.params[:email]
           begin
             rom.relations[:users].changeset(:create, username:, email:,
-                                            api_key: api_key.api_key_encrypted).commit
+                                                     api_key: api_key.api_key_encrypted).commit
 
-            response.body = { message: 'account registered successfully', user_details: { username:, email:, api_key: api_key.api_key } }.to_json
+            response.body = { message: 'account registered successfully',
+                              user_details: { username:, email:, api_key: api_key.api_key } }.to_json
             response.status = 201
           rescue StandardError => e
             if e.message.include?('users_username_key')
@@ -37,4 +38,3 @@ module Account
     end
   end
 end
-

@@ -13,5 +13,3 @@ module Trends
     end
   end
 end
-
-

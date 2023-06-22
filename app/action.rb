@@ -1,7 +1,7 @@
 # auto_register: false
 # frozen_string_literal: true
 
-require "hanami/action"
+require 'hanami/action'
 
 module Trends
   class Action < Hanami::Action
@@ -13,7 +13,7 @@ module Trends
     def handle_not_found(_request, response, _exception)
       response.status = 404
       response.format = :json
-      response.body = { error: "not_found" }.to_json
+      response.body = { error: 'not_found' }.to_json
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'httparty'
 require 'feedjira'
 
@@ -24,11 +26,10 @@ module Trends
               snippet: article_snippet,
               url: article_url,
               source: article_source,
-              code: code
+              code:
             }
 
             rom.relations[:news].changeset(:create, news_item).commit
-
           end
         rescue StandardError => e
           puts "Error: #{e.message}"

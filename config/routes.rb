@@ -2,7 +2,6 @@
 
 module Trends
   class Routes < Hanami::Routes
-
     scope 'api' do
       scope 'feeds' do
         use AuthCheck
@@ -11,7 +10,11 @@ module Trends
     end
 
     slice :account, at: '/account' do
-      post '/new', to: -> (env) { [200, {}, ['Deprecated, use https://rapidapi.com/ochiengotieno304/api/feedpulse2 to access FeedPulse']] }
+      post '/new', to: ->(_env) { [200, {}, ['Deprecated, use https://rapidapi.com/ochiengotieno304/api/feedpulse2 to access FeedPulse']] }
+    end
+
+    slice :admin, at: '/admin' do
+      get '/users', to: 'users.index'
     end
   end
 end

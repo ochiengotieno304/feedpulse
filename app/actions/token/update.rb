@@ -27,7 +27,7 @@ module Trends
                       .changeset(:update, refresh_token: tokens[:refresh_token]).commit
 
             response.status = 200
-            response.body = { message: 'ensure you save your refresh token to prevent account loss', user: user,
+            response.body = { message: 'ensure you save your refresh token to prevent account loss', user:,
                               token: tokens[:access_token] }.to_json
           else
             response.status = 200

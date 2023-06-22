@@ -1,20 +1,21 @@
 # frozen_string_literal: true
+
 module Auth
   class Auth
     attr_reader :secret
 
-    def initialize secret
+    def initialize(secret)
       @secret = secret
     end
 
-    def self.token user_id
+    def self.token(user_id)
       # JWT.encode payload(user_id), @secret, 'HS256'
       access_token = JWT.encode(payload(user_id), ENV['SECRET_KEY'], 'HS256')
       refresh_token = refresh_token(user_id)
-      { access_token: access_token, refresh_token: refresh_token }
+      { access_token:, refresh_token: }
     end
 
-    def self.payload user_id
+    def self.payload(user_id)
       {
         exp: Time.now.to_i + 4 * 3600,
         iat: Time.now.to_i,
@@ -43,4 +44,3 @@ module Auth
     end
   end
 end
-
