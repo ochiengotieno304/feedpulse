@@ -9,12 +9,14 @@ module Trends
       end
     end
 
-    slice :account, at: '/account' do
+    slice :account, at: '/admin' do
       post '/new', to: ->(_env) { [200, {}, ['Deprecated, use https://rapidapi.com/ochiengotieno304/api/feedpulse2 to access FeedPulse']] }
     end
 
     slice :admin, at: '/admin' do
+      use JwtAuth
       get '/users', to: 'users.index'
+      # get '/news', to: 'news.index'
     end
   end
 end

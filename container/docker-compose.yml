@@ -29,7 +29,7 @@ services:
       DATABASE_URL: postgresql://dev:password@db:5432/news_development
       REDIS_URL: redis://redis:6380/1
       SECRET_KEY: secret-key
-      RAPID_API_PROXY_SECRET: 1e76ce90-0300-11ee-b3af-9b90e45890d7
+      RAPID_API_PROXY_SECRET: secret-key
     depends_on:
       - db
       - redis

@@ -22,7 +22,7 @@ module Trends
             tokens = Auth::Auth.token(new_user[:id])
             user = rom.relations[:users].by_pk(new_user[:id])
                       .changeset(:update, refresh_token: tokens[:refresh_token]).commit
-            response.body = { message: 'account registered successfully, save refresh token to avoid account loss',
+            response.body = { message: 'admin registered successfully, save refresh token to avoid admin loss',
                               user:, token: tokens[:access_token] }.to_json
           rescue StandardError => e
             if e.message.include?('users_username_key')

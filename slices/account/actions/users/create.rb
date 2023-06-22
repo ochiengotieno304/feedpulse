@@ -21,7 +21,7 @@ module Account
             rom.relations[:users].changeset(:create, username:, email:,
                                                      api_key: api_key.api_key_encrypted).commit
 
-            response.body = { message: 'account registered successfully',
+            response.body = { message: 'admin registered successfully',
                               user_details: { username:, email:, api_key: api_key.api_key } }.to_json
             response.status = 201
           rescue StandardError => e

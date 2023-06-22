@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Account::Slice.register_provider :persistence, namespace: true do
+Admin::Slice.register_provider :persistence, namespace: true do
   prepare do
     require 'rom'
 
@@ -15,7 +15,7 @@ Account::Slice.register_provider :persistence, namespace: true do
 
     config.auto_registration(
       target.root.join('lib/admin/persistence'),
-      namespace: 'Account::Persistence'
+      namespace: 'Admin::Persistence'
     )
 
     register 'rom', ROM.container(config)
