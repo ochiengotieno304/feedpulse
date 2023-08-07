@@ -6,7 +6,7 @@ require 'feedjira'
 module Trends
   module Operations
     class UpdateNews
-      include Deps['components.countries', 'custom_parser', 'persistence.rom']
+      include Deps['components.countries', 'components.classifier', 'custom_parser', 'persistence.rom']
 
       def call
         countries = Components::Countries.country_codes
@@ -20,13 +20,17 @@ module Trends
             article_snippet = item.news_item_snippet
             article_url = item.news_item_url
             article_source = item.news_item_source
+            article_category = Components::Classifier.classifier(article_snippet).upcase
+
+            puts article_category
 
             news_item = {
               title: article_title,
               snippet: article_snippet,
               url: article_url,
               source: article_source,
-              code:
+              code:,
+              category: article_category
             }
 
             rom.relations[:news].changeset(:create, news_item).commit

@@ -9,10 +9,11 @@ module Trends
         include Deps['persistence.rom']
 
         params do
-          optional(:page).value(:integer, gt?: 0)
-          optional(:per_page).value(:integer, gt?: 0, lteq?: 100)
+          optional(:page).value(:integer, gt?: 1)
+          optional(:per_page).value(:integer, gt?: 1, lteq?: 100)
           optional(:country).value(:string, max_size?: 2)
           required(:username).filled(:string)
+          required(:api_key).filled(:string)
         end
 
         def handle(request, response)
@@ -56,8 +57,10 @@ module Trends
 
         def retrieve_news(request)
           country_code = request.params[:country]&.upcase
-          news_relation = rom.relations[:news].select(:title, :snippet, :url, :source, :code, :date)
+          news_category = request.params[:category]&.upcase
+          news_relation = rom.relations[:news].select(:title, :snippet, :url, :source, :code, :category, :date)
           news_relation = news_relation.where(code: country_code) if country_code
+          news_relation = news_relation.where(category: news_category) if news_category
           news_relation = news_relation.order(Sequel.desc(:date))
           news_relation = news_relation.page(request.params[:page] || 1)
           news_relation = news_relation.per_page(request.params[:per_page] || 10)

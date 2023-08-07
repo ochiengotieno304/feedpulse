@@ -4,7 +4,7 @@ module Trends
   class Routes < Hanami::Routes
     scope 'api' do
       scope 'feeds' do
-        use AuthCheck
+        # use AuthCheck
         get '/', to: 'news.index'
       end
     end
@@ -16,7 +16,7 @@ module Trends
     slice :admin, at: '/admin' do
       use JwtAuth
       get '/users', to: 'users.index'
-      # get '/news', to: 'news.index'
+      get '/news', to: 'news.index'
     end
   end
 end

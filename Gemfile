@@ -17,6 +17,7 @@ gem 'rom-sql', '~> 3.6'
 
 gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
 gem 'bcrypt', '~> 3.1'
+gem 'classifier-reborn'
 gem 'countries', '~> 5.4'
 gem 'feedjira', '~> 3.2', '>= 3.2.2'
 gem 'foreman'
