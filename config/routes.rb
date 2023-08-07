@@ -4,7 +4,7 @@ module Trends
   class Routes < Hanami::Routes
     scope 'api' do
       scope 'feeds' do
-        # use AuthCheck
+        use AuthCheck
         get '/', to: 'news.index'
       end
     end
