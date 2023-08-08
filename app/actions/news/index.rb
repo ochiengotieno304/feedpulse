@@ -20,7 +20,6 @@ module Trends
           proxy_secret = request.env.values_at(:proxy_secret)
           valid_proxy_secret = proxy_secret[0] == ENV['RAPID_API_PROXY_SECRET']
 
-          puts proxy_secret[0]
 
           if valid_proxy_secret
             process_request(request, response)
