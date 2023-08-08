@@ -2,6 +2,7 @@
 
 require 'httparty'
 require 'feedjira'
+require 'date'
 
 module Trends
   module Operations
@@ -20,15 +21,15 @@ module Trends
             article_snippet = item.news_item_snippet
             article_url = item.news_item_url
             article_source = item.news_item_source
+            pub_date = Date.parse(item.published.to_s)
             article_category = Components::Classifier.classifier(article_snippet).upcase
-
-            puts article_category
 
             news_item = {
               title: article_title,
               snippet: article_snippet,
               url: article_url,
               source: article_source,
+              published_date: pub_date,
               code:,
               category: article_category
             }

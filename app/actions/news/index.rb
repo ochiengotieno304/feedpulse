@@ -58,7 +58,7 @@ module Trends
         def retrieve_news(request)
           country_code = request.params[:country]&.upcase
           news_category = request.params[:category]&.upcase
-          news_relation = rom.relations[:news].select(:title, :snippet, :url, :source, :code, :category, :date)
+          news_relation = rom.relations[:news].select(:title, :snippet, :url, :source, :code, :category, :published_date)
           news_relation = news_relation.where(code: country_code) if country_code
           news_relation = news_relation.where(Sequel.like(:category, "%#{news_category}%")) if news_category
           news_relation = news_relation.order(Sequel.desc(:date))
