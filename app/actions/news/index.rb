@@ -60,7 +60,7 @@ module Trends
           news_category = request.params[:category]&.upcase
           news_relation = rom.relations[:news].select(:title, :snippet, :url, :source, :code, :category, :date)
           news_relation = news_relation.where(code: country_code) if country_code
-          news_relation = news_relation.where(category: news_category) if news_category
+          news_relation = news_relation.where(Sequel.like(:category, "%#{news_category}%")) if news_category
           news_relation = news_relation.order(Sequel.desc(:date))
           news_relation = news_relation.page(request.params[:page] || 1)
           news_relation = news_relation.per_page(request.params[:per_page] || 10)
