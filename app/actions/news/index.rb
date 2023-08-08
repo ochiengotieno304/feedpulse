@@ -12,6 +12,7 @@ module Trends
           optional(:page).value(:integer, gt?: 1)
           optional(:per_page).value(:integer, gt?: 1, lteq?: 100)
           optional(:country).value(:string, max_size?: 2)
+          optional(:category).value(:string, max_size?: 20)
           required(:username).filled(:string)
           required(:api_key).filled(:string)
         end
