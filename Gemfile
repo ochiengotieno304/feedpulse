@@ -15,7 +15,7 @@ gem 'pg'
 gem 'rom', '~> 5.3'
 gem 'rom-sql', '~> 3.6'
 
-gem 'activesupport', '~> 7.0', '>= 7.0.4.3'
+gem 'activesupport', '~> 7.0'
 gem 'bcrypt', '~> 3.1'
 gem 'classifier-reborn'
 gem 'countries', '~> 5.4'
