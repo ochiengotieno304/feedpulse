@@ -9,6 +9,8 @@ module Trends
       end
     end
 
+    get '/ping', to: ->(_env){[200, {}, ['it works']]}
+
     slice :account, at: '/admin' do
       post '/new', to: ->(_env) { [200, {}, ['Deprecated, use https://rapidapi.com/ochiengotieno304/api/feedpulse2 to access FeedPulse']] }
     end
