@@ -235,7 +235,8 @@ GEM
     redis-client (0.17.0)
       connection_pool
     regexp_parser (2.8.1)
-    rexml (3.2.6)
+    rexml (3.2.8)
+      strscan (>= 3.0.9)
     rom (5.3.0)
       rom-changeset (~> 5.3, >= 5.3.0)
       rom-core (~> 5.3, >= 5.3.0)
@@ -304,6 +305,7 @@ GEM
       rufus-scheduler (~> 3.2)
       sidekiq (>= 6, < 8)
       tilt (>= 1.4.0)
+    strscan (3.1.0)
     thor (1.2.2)
     tilt (2.2.0)
     transproc (1.1.1)
