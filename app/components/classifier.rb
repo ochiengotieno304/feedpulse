@@ -5,11 +5,18 @@ require 'classifier-reborn'
 module Trends
   module Components
     class Classifier
-      data = File.read('classifier.dat')
-      @trained_classifier = Marshal.load data
+      category_data = File.read('category_classifier.dat')
+      @category_classifier = Marshal.load category_data
 
-      def self.classifier(snippet)
-        @trained_classifier.classify snippet
+      language_data = File.read('language_classifier.dat')
+      @language_classifier = Marshal.load language_data
+
+      def self.category_classifier(snippet)
+        @category_classifier.classify snippet
+      end
+
+      def self.language_classifier(snippet)
+        @language_classifier.classify snippet
       end
     end
   end
