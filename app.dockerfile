@@ -8,8 +8,4 @@ WORKDIR /app
 
 RUN bundle install
 
-RUN chmod +x entry.sh
-
-ENTRYPOINT ["/app/entry.sh"]
-
-CMD ["hanami", "server"]
+CMD ["foreman", "start", "-f", "Procfile"]

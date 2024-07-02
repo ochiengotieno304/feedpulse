@@ -22,7 +22,8 @@ module Trends
             article_url = item.news_item_url
             article_source = item.news_item_source
             pub_date = Date.parse(item.published.to_s)
-            article_category = Components::Classifier.classifier(article_snippet).upcase
+            article_category = Components::Classifier.category_classifier(article_snippet).upcase
+            language_code = Components::Classifier.language_classifier(article_snippet).downcase
 
             news_item = {
               title: article_title,
@@ -31,7 +32,8 @@ module Trends
               source: article_source,
               published_date: pub_date,
               code:,
-              category: article_category
+              category: article_category,
+              language: language_code
             }
 
             rom.relations[:news].changeset(:create, news_item).commit
