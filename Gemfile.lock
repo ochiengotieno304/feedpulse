@@ -1,16 +1,17 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.1.3.4)
+    activesupport (7.2.1)
       base64
       bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
+      concurrent-ruby (~> 1.0, >= 1.3.1)
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
+      logger (>= 1.4.2)
       minitest (>= 5.1)
-      mutex_m
-      tzinfo (~> 2.0)
+      securerandom (>= 0.3)
+      tzinfo (~> 2.0, >= 2.0.5)
     aes_key_wrap (1.1.0)
     ast (2.4.2)
     attr_required (1.0.2)
@@ -22,12 +23,11 @@ GEM
       fast-stemmer (~> 1.0)
       matrix (~> 0.4)
     coderay (1.1.3)
-    concurrent-ruby (1.3.3)
+    concurrent-ruby (1.3.4)
     connection_pool (2.4.1)
-    countries (6.0.1)
+    countries (5.7.2)
       unaccent (~> 0.3)
     crass (1.0.6)
-    csv (3.3.0)
     database_cleaner-core (2.0.1)
     database_cleaner-sequel (2.0.2)
       database_cleaner-core (~> 2.0.0)
@@ -178,8 +178,7 @@ GEM
       dry-validation (>= 1.10, < 2)
       zeitwerk (~> 2.6.0)
     hansi (0.2.1)
-    httparty (0.22.0)
-      csv
+    httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     i18n (1.14.5)
@@ -207,7 +206,7 @@ GEM
     matrix (0.4.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.24.1)
+    minitest (5.25.1)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mustermann (3.0.0)
@@ -215,7 +214,6 @@ GEM
     mustermann-contrib (3.0.0)
       hansi (~> 0.2.0)
       mustermann (= 3.0.0)
-    mutex_m (0.2.0)
     nenv (0.3.0)
     net-http (0.4.1)
       uri
@@ -330,6 +328,7 @@ GEM
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
     sax-machine (1.3.2)
+    securerandom (0.3.1)
     sequel (5.82.0)
       bigdecimal
     shellany (0.0.1)
@@ -372,25 +371,25 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  activesupport
-  bcrypt
+  activesupport (~> 7.2)
+  bcrypt (~> 3.1)
   classifier-reborn
-  countries
+  countries (~> 5.4)
   database_cleaner-sequel
   dotenv
   dry-types
-  feedjira
+  feedjira (~> 3.2, >= 3.2.2)
   foreman
-  guard-puma
-  hanami
-  hanami-controller
+  guard-puma (~> 0.8)
+  hanami (~> 2.0)
+  hanami-controller (~> 2.0)
   hanami-reloader
-  hanami-router
+  hanami-router (~> 2.0)
   hanami-rspec
-  hanami-validations
-  httparty
-  jwt
-  logger
+  hanami-validations (~> 2.0)
+  httparty (~> 0.21.0)
+  jwt (~> 2.7)
+  logger (~> 1.5, >= 1.5.3)
   pg
   puma
   rack-cors
@@ -398,12 +397,12 @@ DEPENDENCIES
   rack-oauth2
   rack-test
   rake
-  redis
-  rom
-  rom-sql
+  redis (~> 5.0)
+  rom (~> 5.3)
+  rom-sql (~> 3.6)
   rubocop
-  sidekiq
-  sidekiq-scheduler
+  sidekiq (~> 7.1)
+  sidekiq-scheduler (~> 5.0, >= 5.0.2)
   tzinfo-data
 
 BUNDLED WITH
