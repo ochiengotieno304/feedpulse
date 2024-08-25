@@ -1,5 +1,5 @@
 :scheduler:
   :schedule:
     update_news:
-      every: 10m
+      every: 30m
       class: Trends::Workers::UpdateNews
