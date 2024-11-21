@@ -39,17 +39,18 @@ GEM
       dry-core (~> 1.0)
       zeitwerk (~> 2.6)
     dry-cli (1.0.0)
-    dry-configurable (1.1.0)
+    dry-configurable (1.2.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-core (1.0.1)
+    dry-core (1.0.2)
       concurrent-ruby (~> 1.0)
+      logger
       zeitwerk (~> 2.6)
     dry-events (1.0.1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
     dry-files (1.1.0)
-    dry-inflector (1.0.0)
+    dry-inflector (1.1.0)
     dry-initializer (3.1.1)
     dry-logger (1.0.4)
     dry-logic (1.5.0)
@@ -174,9 +175,8 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       dry-transformer (~> 1.0, < 2)
-    hanami-validations (2.1.0)
+    hanami-validations (2.2.0)
       dry-validation (>= 1.10, < 2)
-      zeitwerk (~> 2.6.0)
     hansi (0.2.1)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
@@ -269,7 +269,6 @@ GEM
     redis-client (0.22.2)
       connection_pool
     regexp_parser (2.9.2)
-    rexml (3.3.9)
     rom (5.3.2)
       rom-changeset (~> 5.3, >= 5.3.0)
       rom-core (~> 5.3, >= 5.3.2)
@@ -350,7 +349,7 @@ GEM
     unaccent (0.4.0)
     unicode-display_width (2.5.0)
     uri (0.13.0)
-    zeitwerk (2.6.16)
+    zeitwerk (2.6.18)
 
 PLATFORMS
   aarch64-linux
@@ -383,7 +382,7 @@ DEPENDENCIES
   hanami-reloader
   hanami-router (~> 2.0)
   hanami-rspec
-  hanami-validations (~> 2.0)
+  hanami-validations (~> 2.2)
   httparty (~> 0.21.0)
   jwt (~> 2.7)
   logger (~> 1.5, >= 1.5.3)
