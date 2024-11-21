@@ -245,7 +245,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.9)
+    rack (2.2.10)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-heartbeat (1.1.0)
@@ -269,7 +269,6 @@ GEM
     redis-client (0.22.2)
       connection_pool
     regexp_parser (2.9.2)
-    rexml (3.3.9)
     rom (5.3.2)
       rom-changeset (~> 5.3, >= 5.3.0)
       rom-core (~> 5.3, >= 5.3.2)
@@ -330,8 +329,7 @@ GEM
     sequel (5.82.0)
       bigdecimal
     shellany (0.0.1)
-    sidekiq (7.3.2)
-      concurrent-ruby (< 2)
+    sidekiq (7.3.6)
       connection_pool (>= 2.3.0)
       logger
       rack (>= 2.2.4)
@@ -398,7 +396,7 @@ DEPENDENCIES
   rom (~> 5.3)
   rom-sql (~> 3.6)
   rubocop
-  sidekiq (~> 7.1)
+  sidekiq (~> 7.3)
   sidekiq-scheduler (~> 5.0)
   tzinfo-data
 
