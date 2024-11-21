@@ -29,8 +29,8 @@ gem 'rack-cors'
 gem 'rack-heartbeat'
 gem 'rack-oauth2'
 gem 'redis', '~> 5.0'
-gem 'sidekiq', '~> 7.3'
-gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
+gem 'sidekiq', '~> 7.1'
+gem 'sidekiq-scheduler', '~> 5.0'
 gem 'tzinfo-data'
 
 group :development, :test do
