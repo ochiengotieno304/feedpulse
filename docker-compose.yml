@@ -1,5 +1,6 @@
 services:
   redis:
+    container_name: feedpulse_redis
     image: redis
     restart: always
     networks:
@@ -10,6 +11,7 @@ services:
       - 6379:6379
 
   app:
+    container_name: feedpulse_app
     build:
       context: .
       dockerfile: app.dockerfile
