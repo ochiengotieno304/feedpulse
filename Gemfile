@@ -15,7 +15,7 @@ gem 'pg'
 gem 'rom', '~> 5.3'
 gem 'rom-sql', '~> 3.6'
 
-gem 'activesupport', '~> 7.0'
+gem 'activesupport', '~> 7.2'
 gem 'bcrypt', '~> 3.1'
 gem 'classifier-reborn'
 gem 'countries', '~> 5.4'
@@ -30,7 +30,7 @@ gem 'rack-heartbeat'
 gem 'rack-oauth2'
 gem 'redis', '~> 5.0'
 gem 'sidekiq', '~> 7.1'
-gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
+gem 'sidekiq-scheduler', '~> 5.0'
 gem 'tzinfo-data'
 
 group :development, :test do
