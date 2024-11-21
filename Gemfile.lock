@@ -117,7 +117,7 @@ GEM
     ffi (1.17.0-x86_64-linux-musl)
     foreman (0.88.1)
     formatador (1.1.0)
-    fugit (1.11.0)
+    fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
     guard (2.18.1)
@@ -402,7 +402,7 @@ DEPENDENCIES
   rom-sql (~> 3.6)
   rubocop
   sidekiq (~> 7.1)
-  sidekiq-scheduler (~> 5.0, >= 5.0.2)
+  sidekiq-scheduler (~> 5.0)
   tzinfo-data
 
 BUNDLED WITH
