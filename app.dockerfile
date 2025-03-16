@@ -1,6 +1,6 @@
 FROM ruby:3.1.4-alpine
 
-RUN apk add build-base postgresql libpq-dev curl
+RUN apk add --no-cache build-base curl libpq-dev postgresql
 
 COPY . /app/
 

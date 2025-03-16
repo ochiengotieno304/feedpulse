@@ -13,6 +13,8 @@ Hanami.app.register_provider(:custom_parser) do
           element 'ht:news_item_snippet', as: :news_item_snippet
           element 'ht:news_item_url', as: :news_item_url
           element 'ht:news_item_source', as: :news_item_source
+          element 'ht:news_item_picture', as: :news_item_picture
+          element 'pubDate', as: :published
           elements 'ht:news_item', as: :news_item
         end
       end
