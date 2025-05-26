@@ -12,18 +12,19 @@ module Trends
       def call
         countries = Components::Countries.country_codes
         countries.each do |code|
-          url = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=#{code}"
+          url = "https://trends.google.com/trending/rss?geo=#{code}"
           xml = HTTParty.get(url).body
-          feeds = Feedjira.parse(xml)
 
+          feeds = Feedjira.parse(xml)
           feeds.entries.each do |item|
             article_title = item.news_item_title
             article_snippet = item.news_item_snippet
             article_url = item.news_item_url
+            article_picture = item.news_item_picture
             article_source = item.news_item_source
             pub_date = Date.parse(item.published.to_s)
-            article_category = Components::Classifier.category_classifier(article_snippet).upcase
-            language_code = Components::Classifier.language_classifier(article_snippet).downcase
+            article_category = Components::Classifier.category_classifier(article_title).upcase
+            language_code = Components::Classifier.language_classifier(article_title).downcase
 
             news_item = {
               title: article_title,
@@ -33,13 +34,14 @@ module Trends
               published_date: pub_date,
               code:,
               category: article_category,
-              language: language_code
+              language: language_code,
+              picture_url: article_picture
             }
 
             rom.relations[:news].changeset(:create, news_item).commit
           end
         rescue StandardError => e
-          puts "Error: #{e.message}"
+          puts 'article already exists' if e.message.include?('PG::UniqueViolation')
         end
       end
     end
