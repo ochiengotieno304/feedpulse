@@ -12,7 +12,7 @@ gem 'puma'
 gem 'rake'
 
 gem 'pg'
-gem 'rom', '~> 5.3'
+gem 'rom', '~> 5.4'
 gem 'rom-sql', '~> 3.6'
 
 gem 'activesupport', '~> 7.2'
